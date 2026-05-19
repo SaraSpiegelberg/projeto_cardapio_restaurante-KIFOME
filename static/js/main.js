@@ -667,10 +667,45 @@ async function handleCheckoutSubmit(e) {
 
     } catch (err) {
         console.error(err);
-        showToast("Ocorreu um erro no servidor. Enviando direto via WhatsApp...", "warning");
+        
+        let orderId = "TEMP";
+        try {
+            // Save to localStorage for static hosting environments
+            let orders = JSON.parse(localStorage.getItem('kifome_orders') || '[]');
+            orderId = orders.length > 0 ? Math.max(...orders.map(o => o.id)) + 1 : 1;
+            
+            // Format order items for human-readable preview in compact row
+            const itemsString = cart.map(item => {
+                let addsStr = item.additions.length > 0 ? ` (Adicionais: ${item.additions.map(a => a.name).join(', ')})` : '';
+                let obsStr = item.notes ? ` | Obs: "${item.notes}"` : '';
+                return `${item.qty}x ${item.name}${addsStr}${obsStr}`;
+            }).join('; ');
+
+            const newOrder = {
+                id: orderId,
+                customer_name: clientName,
+                customer_phone: clientPhone,
+                customer_address: clientAddress,
+                payment_method: paymentMethod,
+                change_for: paymentMethod === 'Dinheiro' && changeFor ? changeFor : null,
+                items: itemsString,
+                subtotal: subtotal,
+                delivery_fee: DELIVERY_FEE,
+                total: total,
+                status: "🔴 Pendente",
+                created_at: new Date().toLocaleString('sv-SE').substring(0, 19)
+            };
+            
+            orders.push(newOrder);
+            localStorage.setItem('kifome_orders', JSON.stringify(orders));
+            showToast("Modo Demonstração: Pedido salvo no LocalStorage do navegador!", "success");
+        } catch (storageErr) {
+            console.error("Falha ao salvar no LocalStorage:", storageErr);
+            showToast("Enviando pedido direto via WhatsApp...", "warning");
+        }
 
         // Failover - send WhatsApp even if backend is offline
-        const messageText = formatWhatsAppMessage("OFFLINE", clientName, clientPhone, clientAddress, paymentMethod, changeFor, subtotal, total);
+        const messageText = formatWhatsAppMessage(orderId, clientName, clientPhone, clientAddress, paymentMethod, changeFor, subtotal, total);
         const encodedText = encodeURIComponent(messageText);
         const whatsappUrl = `https://api.whatsapp.com/send?phone=${WHATSAPP_CONTACT}&text=${encodedText}`;
         
