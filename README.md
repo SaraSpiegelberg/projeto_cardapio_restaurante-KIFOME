@@ -53,30 +53,42 @@ O sistema dispensa a necessidade de bancos de dados relacionais complexos ou ins
 
 ## Como Instalar e Rodar o Projeto
 
-### Pre-requisitos
+### Metodo Super Simplificado (Apenas Um Clique no Windows)
+Se voce utiliza o sistema operacional Windows, nao e necessario executar nenhum comando ou configurar pastas manualmente no terminal. Basta seguir os passos:
+1. Certifique-se de ter o Python 3 instalado no computador.
+2. Baixe e extraia a pasta do projeto.
+3. Dê um clique duplo no arquivo **`iniciar_sistema.bat`**.
+
+O script ira verificar se o Python esta ativo, criar o ambiente virtual, instalar todas as dependencias do requirements.txt automaticamente, abrir o cardapio e o painel administrativo no seu navegador padrao e iniciar o servidor!
+
+---
+
+### Metodo Manual (Passo a Passo)
+
+#### Pre-requisitos
 Certifique-se de ter o Python 3 instalado em seu computador.
 
-### Passo 1: Clonar ou Baixar o Projeto
+#### Passo 1: Clonar ou Baixar o Projeto
 Baixe os arquivos do projeto para um diretorio local em sua maquina.
 
-### Passo 2: Instalar as Dependencias
+#### Passo 2: Instalar as Dependencias
 Abra o terminal na pasta do projeto e instale a biblioteca Flask (listada no arquivo requirements.txt):
 ```bash
 pip install -r requirements.txt
 ```
 
-### Passo 3: Iniciar o Servidor Web
+#### Passo 3: Iniciar o Servidor Web
 Execute o arquivo do backend Python para iniciar o servidor local:
 ```bash
 python app.py
 ```
 O servidor estara ativo no endereco local: `http://127.0.0.1:5000`
 
-### Passo 4: Acessar as Interfaces no Navegador
+#### Passo 4: Acessar as Interfaces no Navegador
 * **Loja do Cliente:** Acesse `http://127.0.0.1:5000` para ver o cardapio e fazer pedidos.
 * **Painel Administrativo:** Acesse `http://127.0.0.1:5000/admin` para monitorar a cozinha e gerenciar os pedidos.
 
-### Passo 5: Executar os Testes Automatizados
+#### Passo 5: Executar os Testes Automatizados
 Para rodar a suite de testes automatizados e validar se todos os sistemas de escrita em banco e transicoes de status estao operando corretamente, execute o terminal com o comando:
 ```bash
 python test_app.py
