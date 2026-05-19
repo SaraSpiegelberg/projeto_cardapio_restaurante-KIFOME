@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ki Fome - Lanches & Sabores</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main Style -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="navbar-container">
+        <div class="navbar-content max-width-container">
+            <a href="#" class="logo">
+                <span class="logo-orange">Ki</span><span class="logo-blue">Fome</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#cardapio" class="nav-item active">Cardápio</a>
+                <a href="#sobre" class="nav-item">Sobre Nós</a>
+                <a href="/admin" class="nav-item admin-link" target="_blank"><i class="fa-solid fa-gauge"></i> Painel Lancheiro</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="cart-btn" id="open-cart-btn">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-badge" id="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero / Banner Section -->
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content max-width-container">
+            <span class="badge-status open"><i class="fa-solid fa-clock"></i> Aberto Agora</span>
+            <h1 class="hero-title">Matando a sua fome com o <span class="text-gradient">Melhor Sabor!</span></h1>
+            <p class="hero-subtitle">Os xis mais gigantes, os cachorros quentes mais prensados e os pastéis mais crocantes da região. Peça agora e receba quentinho!</p>
+            <div class="hero-cta">
+                <a href="#cardapio" class="btn btn-primary"><i class="fa-solid fa-utensils"></i> Ver Cardápio</a>
+                <a href="#sobre" class="btn btn-secondary"><i class="fa-solid fa-circle-info"></i> Conhecer Ki Fome</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Container -->
+    <main class="max-width-container" id="cardapio">
+        
+        <!-- Category Selector tabs -->
+        <div class="section-header">
+            <h2 class="section-title">Nosso Cardápio</h2>
+            <p class="section-desc">Escolha a sua categoria favorita e monte o seu lanche do seu jeito</p>
+        </div>
+
+        <div class="categories-tabs-container">
+            <button class="category-tab active" data-category="all">
+                <i class="fa-solid fa-border-all"></i> Todos
+            </button>
+            <button class="category-tab" data-category="xis">
+                <i class="fa-solid fa-hamburger"></i> Xis
+            </button>
+            <button class="category-tab" data-category="dog">
+                <i class="fa-solid fa-hotdog"></i> Cachorro Quente
+            </button>
+            <button class="category-tab" data-category="torrada">
+                <i class="fa-solid fa-bread-slice"></i> Torrada
+            </button>
+            <button class="category-tab" data-category="pastel">
+                <i class="fa-solid fa-pie-chart"></i> Pastel
+            </button>
+            <button class="category-tab" data-category="bebidas">
+                <i class="fa-solid fa-bottle-water"></i> Bebidas
+            </button>
+        </div>
+
+        <!-- Menu Grid -->
+        <div class="menu-grid" id="menu-items-grid">
+            <!-- Dynamically populated via JS -->
+            <div class="loading-spinner"><i class="fa-solid fa-circle-notch fa-spin"></i> Carregando cardápio...</div>
+        </div>
+
+    </main>
+
+    <!-- About Section -->
+    <section class="about-section" id="sobre">
+        <div class="max-width-container about-grid">
+            <div class="about-info">
+                <span class="subtitle-badge">Tradição & Sabor</span>
+                <h2>Por que pedir na <span class="text-orange">Ki</span><span class="text-blue">Fome</span>?</h2>
+                <p>Na Ki Fome, preparamos cada lanche com ingredientes frescos, selecionados e com um tempero exclusivo que você só encontra aqui. Nossos pães são super macios, o queijo é derretido no ponto certo e a maionese caseira é a receita secreta da casa!</p>
+                <div class="features-list">
+                    <div class="feature-item">
+                        <div class="feature-icon orange"><i class="fa-solid fa-truck-fast"></i></div>
+                        <div>
+                            <h4>Entrega Super Rápida</h4>
+                            <p>Seu lanche chega quentinho e embalado com cuidado especial.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon blue"><i class="fa-solid fa-pepper-hot"></i></div>
+                        <div>
+                            <h4>Ingredientes Premium</h4>
+                            <p>Selecionamos as melhores carnes e queijos para um lanche espetacular.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image-container">
+                <div class="about-image-card">
+                    <img src="images/lanche_banner.png" alt="Ki Fome Banner" class="about-img" id="about-banner-img">
+                    <div class="about-stats-floating">
+                        <div class="stat-circle">
+                            <span class="stat-number">4.9</span>
+                            <span class="stat-stars">⭐⭐⭐⭐⭐</span>
+                        </div>
+                        <p class="stat-text">Avaliação média dos clientes famintos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="max-width-container footer-content">
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <span class="logo-orange">Ki</span><span class="logo-blue">Fome</span>
+                </a>
+                <p>O sabor que combina com a sua fome. Peça agora mesmo pelo site ou pelo WhatsApp.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-info">
+                <h4><i class="fa-solid fa-location-dot text-orange"></i> Localização</h4>
+                <p>Av. das Delícias, 1000 - Bairro do Sabor</p>
+                <p>Porto Alegre - RS</p>
+                <h4 style="margin-top: 1.5rem;"><i class="fa-solid fa-clock text-blue"></i> Horário</h4>
+                <p>Terça a Domingo: 18h às 23h59</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Ki Fome Lanches. Todos os direitos reservados. Feito com ❤️ usando Python & JS.</p>
+        </div>
+    </footer>
+
+    <!-- SHOPPING CART SIDEBAR (Slides from Right) -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-sidebar-header">
+            <h3><i class="fa-solid fa-shopping-basket"></i> Meu Carrinho</h3>
+            <button class="close-cart-btn" id="close-cart-btn"><i class="fa-solid fa-times"></i></button>
+        </div>
+        <div class="cart-sidebar-body" id="cart-items-container">
+            <!-- Dynamically populated via JS -->
+            <div class="empty-cart-message">
+                <i class="fa-solid fa-cart-plus"></i>
+                <p>Seu carrinho está vazio.</p>
+                <p class="small">Que tal adicionar um Xis Tudo bem caprichado?</p>
+            </div>
+        </div>
+        <div class="cart-sidebar-footer" id="cart-footer">
+            <div class="price-summary">
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span id="cart-subtotal">R$ 0,00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Taxa de Entrega</span>
+                    <span id="cart-delivery">R$ 5,00</span>
+                </div>
+                <div class="summary-row total-row">
+                    <span>Total</span>
+                    <span id="cart-total">R$ 5,00</span>
+                </div>
+            </div>
+            <button class="btn btn-primary btn-block" id="proceed-checkout-btn" disabled>
+                <i class="fa-solid fa-check"></i> Finalizar Pedido
+            </button>
+        </div>
+    </div>
+    <div class="cart-overlay" id="cart-overlay"></div>
+
+    <!-- ITEM CUSTOMIZATION MODAL -->
+    <div class="modal" id="custom-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-item-title">Customizar Item</h3>
+                <button class="close-modal-btn" id="close-modal-btn"><i class="fa-solid fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-item-summary">
+                    <img id="modal-item-img" src="" alt="Lanche" class="modal-img">
+                    <div>
+                        <p id="modal-item-desc">Descrição do lanche maravilhoso.</p>
+                        <span class="modal-item-price" id="modal-item-price">R$ 0,00</span>
+                    </div>
+                </div>
+
+                <div class="customization-options">
+                    <!-- Observações -->
+                    <div class="options-group">
+                        <label class="group-label">Alguma observação?</label>
+                        <p class="group-desc">Ex: sem cebola, sem maionese, molho verde extra...</p>
+                        <textarea id="custom-notes" placeholder="Digite suas observações aqui..." rows="2"></textarea>
+                    </div>
+
+                    <!-- Adicionais (Somente para lanches) -->
+                    <div class="options-group" id="additionals-group">
+                        <label class="group-label">Turbinar Lanche (Opcional)</label>
+                        <p class="group-desc">Adicione aquele toque especial no seu pedido</p>
+                        
+                        <div class="checkbox-option">
+                            <label>
+                                <input type="checkbox" class="additional-checkbox" data-name="Bacon Extra" data-price="4.50">
+                                <span>Bacon Extra (+ R$ 4,50)</span>
+                            </label>
+                        </div>
+                        <div class="checkbox-option">
+                            <label>
+                                <input type="checkbox" class="additional-checkbox" data-name="Queijo Duplo" data-price="4.00">
+                                <span>Queijo Derretido Extra (+ R$ 4,00)</span>
+                            </label>
+                        </div>
+                        <div class="checkbox-option">
+                            <label>
+                                <input type="checkbox" class="additional-checkbox" data-name="Ovo Adicional" data-price="2.00">
+                                <span>Ovo Adicional (+ R$ 2,00)</span>
+                            </label>
+                        </div>
+                        <div class="checkbox-option">
+                            <label>
+                                <input type="checkbox" class="additional-checkbox" data-name="Maionese Caseira Extra" data-price="1.50">
+                                <span>Maionese Caseira Extra (+ R$ 1,50)</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="quantity-selector">
+                    <button class="qty-btn minus" id="modal-qty-minus"><i class="fa-solid fa-minus"></i></button>
+                    <span class="qty-number" id="modal-qty-number">1</span>
+                    <button class="qty-btn plus" id="modal-qty-plus"><i class="fa-solid fa-plus"></i></button>
+                </div>
+                <button class="btn btn-primary" id="modal-add-to-cart">Adicionar R$ <span id="modal-total-price">0,00</span></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHECKOUT FORM MODAL -->
+    <div class="modal" id="checkout-modal">
+        <div class="modal-content max-w-lg">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-truck-ramp-box text-blue"></i> Finalizar seu Pedido</h3>
+                <button class="close-modal-btn" id="close-checkout-modal"><i class="fa-solid fa-times"></i></button>
+            </div>
+            <form id="checkout-form">
+                <div class="modal-body scrollable">
+                    <div class="checkout-summary-box">
+                        <span class="summary-label">Total a Pagar:</span>
+                        <span class="summary-total-price" id="checkout-total-price">R$ 0,00</span>
+                    </div>
+
+                    <h4 class="form-section-title"><i class="fa-solid fa-user"></i> Informações do Cliente</h4>
+                    
+                    <div class="form-group">
+                        <label for="client-name">Nome Completo *</label>
+                        <input type="text" id="client-name" required placeholder="Como o entregador deve lhe chamar?">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="client-phone">Celular (WhatsApp) *</label>
+                        <input type="tel" id="client-phone" required placeholder="Ex: (51) 99999-9999">
+                    </div>
+
+                    <h4 class="form-section-title"><i class="fa-solid fa-map-location-dot"></i> Endereço de Entrega</h4>
+                    
+                    <div class="form-group">
+                        <label for="client-address">Endereço Completo *</label>
+                        <input type="text" id="client-address" required placeholder="Rua, Número, Bairro e Complemento">
+                    </div>
+
+                    <h4 class="form-section-title"><i class="fa-solid fa-credit-card"></i> Forma de Pagamento</h4>
+                    
+                    <div class="payment-methods">
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="Dinheiro" checked>
+                            <span class="payment-box">
+                                <i class="fa-solid fa-money-bill-wave"></i> Dinheiro
+                            </span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="Pix">
+                            <span class="payment-box">
+                                <i class="fa-solid fa-qrcode"></i> Pix (Chave CNPJ)
+                            </span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="Cartão">
+                            <span class="payment-box">
+                                <i class="fa-solid fa-credit-card"></i> Cartão (Crédito/Débito)
+                            </span>
+                        </label>
+                    </div>
+
+                    <!-- Troco (Aparece se for dinheiro) -->
+                    <div class="form-group" id="change-group">
+                        <label for="client-change">Precisa de Troco? Para quanto?</label>
+                        <input type="text" id="client-change" placeholder="Ex: Troco para R$ 50,00 (Deixe em branco se não precisar)">
+                    </div>
+                </div>
+                <div class="modal-footer checkout-footer">
+                    <p class="whatsapp-note"><i class="fa-brands fa-whatsapp text-green"></i> O pedido será enviado ao WhatsApp e registrado no sistema.</p>
+                    <button type="submit" class="btn btn-primary btn-block btn-lg" id="submit-order-btn">
+                        <i class="fa-brands fa-whatsapp"></i> Enviar Pedido via WhatsApp
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- NOTIFICATION SYSTEM -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Dynamic JavaScript file -->
+    <script src="js/main.js"></script>
+</body>
+</html>

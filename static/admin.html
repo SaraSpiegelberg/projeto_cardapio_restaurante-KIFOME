@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ki Fome - Painel do Lancheiro</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main Style -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="admin-body">
+
+    <!-- Admin Top Bar -->
+    <header class="navbar-container admin-navbar">
+        <div class="navbar-content max-width-container">
+            <a href="#" class="logo">
+                <span class="logo-orange">Ki</span><span class="logo-blue">Fome</span>
+                <span class="badge-admin">Painel Admin</span>
+            </a>
+            <div class="admin-nav-actions">
+                <button class="btn btn-secondary btn-sm" id="btn-refresh-orders">
+                    <i class="fa-solid fa-arrows-rotate"></i> Atualizar Fila
+                </button>
+                <a href="/" class="btn btn-primary btn-sm"><i class="fa-solid fa-store"></i> Ver Site</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Stats Banner -->
+    <div class="admin-stats-container max-width-container">
+        <div class="stats-grid">
+            <div class="stat-card blue">
+                <div class="stat-card-body">
+                    <span class="stat-card-title">Faturamento Estimado</span>
+                    <span class="stat-card-value" id="stats-revenue">R$ 0,00</span>
+                </div>
+                <div class="stat-card-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+            </div>
+            <div class="stat-card orange">
+                <div class="stat-card-body">
+                    <span class="stat-card-title">Pedidos Pendentes</span>
+                    <span class="stat-card-value" id="stats-pending">0</span>
+                </div>
+                <div class="stat-card-icon"><i class="fa-solid fa-bell"></i></div>
+            </div>
+            <div class="stat-card green">
+                <div class="stat-card-body">
+                    <span class="stat-card-title">Em Preparo / Entrega</span>
+                    <span class="stat-card-value" id="stats-active">0</span>
+                </div>
+                <div class="stat-card-icon"><i class="fa-solid fa-fire-burner"></i></div>
+            </div>
+            <div class="stat-card dark">
+                <div class="stat-card-body">
+                    <span class="stat-card-title">Entregues Hoje</span>
+                    <span class="stat-card-value" id="stats-completed">0</span>
+                </div>
+                <div class="stat-card-icon"><i class="fa-solid fa-circle-check"></i></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Master-Detail Dashboard Workspace -->
+    <main class="admin-dashboard-layout max-width-container">
+        
+        <!-- Controls Bar: Search & Dynamic Filters -->
+        <div class="admin-controls-bar">
+            <div class="search-box-container">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="admin-search-input" placeholder="Buscar por cliente, endereço ou ID do pedido...">
+            </div>
+            
+            <div class="filter-tabs-container" id="filter-tabs-container">
+                <button class="filter-tab active" data-filter="Todos">Todos</button>
+                <button class="filter-tab" data-filter="Pendente">🔴 Pendentes (<span id="count-badge-pending">0</span>)</button>
+                <button class="filter-tab" data-filter="Preparando">🟡 Na Chapa (<span id="count-badge-preparing">0</span>)</button>
+                <button class="filter-tab" data-filter="A Caminho">🔵 A Caminho (<span id="count-badge-shipping">0</span>)</button>
+                <button class="filter-tab" data-filter="Entregue">🟢 Entregues (<span id="count-badge-completed">0</span>)</button>
+                <button class="filter-tab" data-filter="Cancelado">⚪ Cancelados (<span id="count-badge-cancelled">0</span>)</button>
+            </div>
+        </div>
+
+        <div class="admin-workspace">
+            
+            <!-- LEFT PANEL: Scrollable Master List of Orders -->
+            <section class="admin-master-panel">
+                <div class="panel-header">
+                    <h3>Fila de Pedidos (<span id="orders-count-badge">0</span>)</h3>
+                </div>
+                <div class="orders-list-scrollable" id="admin-orders-list">
+                    <!-- Dynamically populated via JS -->
+                    <div class="empty-list-message">Nenhum pedido recebido</div>
+                </div>
+            </section>
+
+            <!-- RIGHT PANEL: Active Work Desk Details Pane -->
+            <section class="admin-detail-panel" id="admin-detail-panel">
+                
+                <!-- Placeholder when no row is clicked yet -->
+                <div class="no-selection-placeholder" id="no-selection-placeholder">
+                    <i class="fa-solid fa-receipt placeholder-icon"></i>
+                    <h4>Selecione um pedido na fila para ver os detalhes</h4>
+                    <p>Aqui você poderá visualizar os opcionais dos lanches, observações, dados do cliente, método de entrega e transicionar os status de preparo.</p>
+                </div>
+                
+                <!-- Workspace Desk (Active Detail) -->
+                <div class="order-detail-workspace hidden" id="order-detail-workspace">
+                    <div class="detail-workspace-header">
+                        <h3>Pedido #<span id="ws-order-id">0</span></h3>
+                        <span class="status-badge" id="ws-status-badge">-</span>
+                    </div>
+                    
+                    <div class="detail-workspace-body">
+                        
+                        <div class="ws-section">
+                            <h4><i class="fa-solid fa-user text-blue"></i> Cliente</h4>
+                            <p><strong>Nome:</strong> <span id="ws-name">-</span></p>
+                            <p><strong>Telefone:</strong> <span id="ws-phone">-</span></p>
+                            <p><strong>Endereço:</strong> <span id="ws-address">-</span></p>
+                        </div>
+                        
+                        <div class="ws-section">
+                            <h4><i class="fa-solid fa-burger text-orange"></i> Itens do Pedido</h4>
+                            <ul class="ws-items-list" id="ws-items-list">
+                                <!-- Dynamically populated -->
+                            </ul>
+                        </div>
+                        
+                        <div class="ws-section">
+                            <h4><i class="fa-solid fa-credit-card text-blue"></i> Pagamento & Resumo</h4>
+                            <p><strong>Forma de Pagamento:</strong> <span id="ws-payment">-</span></p>
+                            <p id="ws-change-row"><strong>Troco:</strong> <span id="ws-change">-</span></p>
+                            
+                            <div class="checkout-summary-box" style="margin-top: 1rem;">
+                                <div class="summary-row" style="margin-bottom: 0.3rem;">
+                                    <span>Subtotal:</span>
+                                    <span id="ws-subtotal">R$ 0,00</span>
+                                </div>
+                                <div class="summary-row" style="margin-bottom: 0.3rem;">
+                                    <span>Taxa de entrega:</span>
+                                    <span id="ws-delivery">R$ 0,00</span>
+                                </div>
+                                <div class="summary-row total-row">
+                                    <span>Total Geral:</span>
+                                    <span id="ws-total" style="font-size: 1.5rem; color: var(--color-orange-dark)">R$ 0,00</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="detail-workspace-footer" id="ws-modal-footer">
+                        <!-- Advanced status actions rendered via JS -->
+                    </div>
+                </div>
+
+            </section>
+            
+        </div>
+
+    </main>
+
+    <!-- Hidden audio element for new orders -->
+    <audio id="bell-sound" src="https://assets.mixkit.co/active_storage/sfx/2869/2869-500.wav" preload="auto"></audio>
+
+    <!-- Notification Toast System -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+# Python cache and compilation files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyd
+.pytest_cache/
+.unittest_cache/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+bin/
+lib/
+include/
+share/
+
+# Local databases and runtime data
+# The server will automatically initialize a fresh orders.csv if it does not exist
+orders.csv
+test_orders.csv
+
+# IDE and Editor configs
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+*~
+
+# Operating System files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# Package distribution files
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
