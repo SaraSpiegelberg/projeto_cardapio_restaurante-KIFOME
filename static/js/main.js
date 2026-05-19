@@ -153,7 +153,7 @@ const MENU_ITEMS = [
         name: 'Coca-Cola 2 Litros',
         description: 'Garrafa de refrigerante Coca-Cola tamanho família gelada ideal para compartilhar.',
         price: 11.00,
-        image: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=600&auto=format&fit=crop'
+        image: 'https://images.unsplash.com/photo-1605270012917-bf15775a9541?q=80&w=600&auto=format&fit=crop'
     },
     {
         id: 19,
