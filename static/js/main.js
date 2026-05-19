@@ -85,7 +85,7 @@ const MENU_ITEMS = [
         name: 'Torrada Simples',
         description: 'Pão de torrada especial de padaria, presunto premium, queijo mussarela derretido e maionese prensados com bastante manteiga na chapa.',
         price: 12.00,
-        image: 'https://images.unsplash.com/photo-1525351484163-7529414344d8?q=80&w=600&auto=format&fit=crop'
+        image: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?q=80&w=600&auto=format&fit=crop'
     },
     {
         id: 11,
@@ -93,7 +93,7 @@ const MENU_ITEMS = [
         name: 'Torrada Especial da Casa',
         description: 'Pão de torrada, presunto, queijo derretido, ovo frito de gema mole/firme, tomate fatiado e maionese caseira prensados.',
         price: 16.00,
-        image: 'https://images.unsplash.com/photo-1482049016688-2d3e1b311543?q=80&w=600&auto=format&fit=crop'
+        image: 'https://images.unsplash.com/photo-1539252554453-80ab65ce3586?q=80&w=600&auto=format&fit=crop'
     },
 
     // Pastel
@@ -103,7 +103,7 @@ const MENU_ITEMS = [
         name: 'Pastel de Carne Suculento',
         description: 'Massa super crocante frita na hora, recheada com carne moída selecionada, temperos verdes e azeitonas picadas.',
         price: 10.00,
-        image: 'https://images.unsplash.com/photo-1601050690597-df056fb4ce78?q=80&w=600&auto=format&fit=crop'
+        image: 'https://images.unsplash.com/photo-1626132647523-66f5bf380027?q=80&w=600&auto=format&fit=crop'
     },
     {
         id: 13,
@@ -111,7 +111,7 @@ const MENU_ITEMS = [
         name: 'Pastel de Queijo Cremoso',
         description: 'Pastel frito na hora com recheio abundante de queijo mussarela de altíssima qualidade derretido e orégano.',
         price: 10.00,
-        image: 'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?q=80&w=600&auto=format&fit=crop'
+        image: 'https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=600&auto=format&fit=crop'
     },
     {
         id: 14,
@@ -119,7 +119,7 @@ const MENU_ITEMS = [
         name: 'Pastel Frango com Catupiry',
         description: 'Massa crocante frita na hora, recheada com frango cozido e desfiado temperado com alho e cebola e queijo tipo Catupiry original.',
         price: 12.00,
-        image: 'https://images.unsplash.com/photo-1628191139360-408a06492199?q=80&w=600&auto=format&fit=crop'
+        image: 'https://images.unsplash.com/photo-1626132647523-66f5bf380027?q=80&w=600&auto=format&fit=crop'
     },
     {
         id: 15,
@@ -127,7 +127,7 @@ const MENU_ITEMS = [
         name: 'Pastel Doce de Chocolate',
         description: 'Pastel doce crocante recheado com chocolate ao leite cremoso derretido e granulado de chocolate.',
         price: 13.00,
-        image: 'https://images.unsplash.com/photo-1587314168485-3236d6710814?q=80&w=600&auto=format&fit=crop'
+        image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=600&auto=format&fit=crop'
     },
 
     // Bebidas
@@ -145,7 +145,7 @@ const MENU_ITEMS = [
         name: 'Guaraná Antarctica 350ml',
         description: 'Lata de refrigerante Guaraná Antarctica original trincando de gelada.',
         price: 5.00,
-        image: 'https://images.unsplash.com/photo-1629227702826-64117b4ab36a?q=80&w=600&auto=format&fit=crop'
+        image: 'https://images.unsplash.com/photo-1567103472667-6898f3a83cd2?q=80&w=600&auto=format&fit=crop'
     },
     {
         id: 18,
